@@ -12,6 +12,7 @@ type GormStore struct {
 }
 
 func NewGormStore() *GormStore {
+
 	db, err := gorm.Open(sqlite.Open("contacts.db"), &gorm.Config{})
 	if err != nil {
 		//Panic si DB inaccessible
