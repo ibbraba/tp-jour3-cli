@@ -11,12 +11,17 @@ type JSONStore struct {
 
 func NewJSONStore(filePath string) *JSONStore {
 
-	// Ensure file exists
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		// Create empty file
+		// Crée le fichier
 		f, err := os.Create(filePath)
+
 		if err != nil {
 			panic("Impossible de créer le fichier de sortie JSON: " + err.Error())
+		}
+		// Insérer un tableau vide dans le fichier
+		_, err = f.WriteString("[]")
+		if err != nil {
+			panic("Impossible d'écrire dans le fichier de sortie JSON: " + err.Error())
 		}
 		f.Close()
 	}
@@ -34,6 +39,15 @@ func (js *JSONStore) Add(contact *Contact) error {
 	if err == nil && len(fileData) > 0 {
 		json.Unmarshal(fileData, &contacts)
 	}
+
+	// Détermine le prochain ID
+	var maxID int
+	for _, c := range contacts {
+		if c.ID > maxID {
+			maxID = c.ID
+		}
+	}
+	contact.ID = maxID + 1
 
 	//Ajoute le contact au slice
 	contacts = append(contacts, contact)

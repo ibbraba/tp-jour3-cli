@@ -12,7 +12,7 @@ Dans le fichier config.yaml vous pouvez choisir ces 3 modes de stockage :
 
 ![alt text](gorm.png)
 
-- json : Crée un fichier de contacts en JSON 
+- json : Crée ou modifie un fichier de contacts en JSON 
 
 ![alt text](json.png)
 - memory : Print la sortie sur la console 
