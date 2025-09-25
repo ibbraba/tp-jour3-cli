@@ -10,7 +10,7 @@ Dans le fichier config.yaml vous pouvez choisir ces 3 modes de stockage :
 - gorm : Utilse une base de données SQLite
 
 
-![alt text](gorm.png)
+![alt text](db.png)
 
 - json : Crée ou modifie un fichier de contacts en JSON 
 
